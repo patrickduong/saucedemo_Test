@@ -1,6 +1,5 @@
 package webdriver;
 
-import cucumber.ScenarioReport;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -29,7 +28,7 @@ public class WebDriverConfig {
 
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(SLOW_TIMEOUT));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(MEDIUM_QUICK_TIMEOUT));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(VERY_SLOW_TIMEOUT));
     }
 
     public WebDriverConfig() {
