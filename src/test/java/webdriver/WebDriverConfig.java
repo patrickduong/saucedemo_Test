@@ -27,8 +27,9 @@ public class WebDriverConfig {
         } else initBrowserDriverOnMac(browserType);
 
         driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(SLOW_TIMEOUT));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(VERY_SLOW_TIMEOUT));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(MEDIUM_TIMEOUT));
     }
 
     public WebDriverConfig() {

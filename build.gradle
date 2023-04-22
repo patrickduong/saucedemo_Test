@@ -3,20 +3,29 @@ plugins {
     id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.1.25"
 }
 
+ext {
+    cucumberVersion = '7.11.2'
+    junitbomVersion = '5.9.2'
+    seleniumJavaVersion = '4.1.2'
+    junitvintageengineVersion = '5.7.2'
+    hamcrestVersion = '2.2'
+    webdrivermanagerVersion = '5.3.2'
+}
+
 repositories {
     mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.9.2"))
-    testImplementation(platform("io.cucumber:cucumber-bom:7.11.2"))
-    testImplementation 'io.cucumber:cucumber-java:7.11.2'
-    testImplementation 'io.cucumber:cucumber-junit:7.11.2'
-    testImplementation 'org.junit.vintage:junit-vintage-engine:5.7.2'
-    testImplementation 'org.hamcrest:hamcrest:2.2'
-    testImplementation 'io.github.bonigarcia:webdrivermanager:5.3.2'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.1.2' // stable version is 3.141.59
+    testImplementation(platform("org.junit:junit-bom:$junitbomVersion"))
+    testImplementation(platform("io.cucumber:cucumber-bom:$cucumberVersion"))
+    testImplementation "io.cucumber:cucumber-java:$cucumberVersion"
+    testImplementation "io.cucumber:cucumber-junit:$cucumberVersion"
+    testImplementation "org.junit.vintage:junit-vintage-engine:$junitvintageengineVersion"
+    testImplementation "org.hamcrest:hamcrest:$hamcrestVersion"
+    testImplementation "io.github.bonigarcia:webdrivermanager:$webdrivermanagerVersion"
+    implementation "org.seleniumhq.selenium:selenium-java:$seleniumJavaVersion" // stable version is 3.141.59
 
 }
 
