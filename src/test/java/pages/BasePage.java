@@ -1,8 +1,12 @@
 package pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class BasePage {
@@ -13,6 +17,7 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         currentPage = this;
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public String getPageTitle() {
@@ -37,20 +42,22 @@ public class BasePage {
         js.executeScript("arguments[0].scrollIntoView()", driver.findElement(element));
     }
 
-    public void selectDropdownItem(By element, String filter) {
+    public void selectDropdownItem(By element, String item) {
         Select dropdown = new Select(driver.findElement(element));
-        dropdown.selectByVisibleText(filter);
+        dropdown.selectByVisibleText(item);
     }
 
-    public int getTotalListItem(By element){
-        List<WebElement> elements = driver.findElements(element);
+    public int getTotalListItem(List<WebElement> elements){
         return elements.size();
     }
 
+    public void waitForElementToClick (By element, long timeout){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+        clickElement(element);
+    }
 
-
-
-    public void clickLink(By element){
+    public void clickElement(By element){
         driver.findElement(element).click();
     }
 

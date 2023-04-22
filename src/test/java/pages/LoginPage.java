@@ -23,7 +23,7 @@ public class LoginPage extends BasePage {
         username_field.sendKeys(userName);
         password_field.sendKeys(passWord);
         login_button.click();
-        new InventoryPage(driver);
+
     }
 
 

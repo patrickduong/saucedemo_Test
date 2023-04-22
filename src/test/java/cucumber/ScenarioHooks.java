@@ -2,7 +2,6 @@ package cucumber;
 
 import io.cucumber.java.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
 import java.io.IOException;
 
@@ -15,7 +14,7 @@ public class ScenarioHooks {
 
     @BeforeAll
     public static void before_all() {
-        BasePage basePage = PageFactory.initElements(driver, BasePage.class);
+        BasePage basePage = new BasePage(driver);
         basePage.navigateTo(TEST_URL);
     }
 

@@ -9,6 +9,10 @@ public class MenuPopUP extends BasePage {
     @FindBy(id = "react-burger-menu-btn")
     private WebElement menu_button;
 
+
+    @FindBy(className = "bm-menu")
+    private WebElement menu;
+
     @FindBy(id = "logout_sidebar_link")
     private WebElement logout_link;
 
@@ -16,11 +20,10 @@ public class MenuPopUP extends BasePage {
         super(driver);
     }
 
-    public void logout() {
+    public void logout() throws InterruptedException {
         menu_button.click();
-        if (logout_link.isDisplayed())
+        if (menu.isDisplayed())
             logout_link.click();
-        new LoginPage(driver);
     }
 
 
