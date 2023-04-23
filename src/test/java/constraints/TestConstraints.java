@@ -1,4 +1,4 @@
-package contraints;
+package constraints;
 
 public class TestConstraints {
     public final static String TEST_URL = "https://www.saucedemo.com/";

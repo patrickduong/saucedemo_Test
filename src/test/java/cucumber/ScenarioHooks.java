@@ -3,13 +3,14 @@ package cucumber;
 import io.cucumber.java.*;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
+
 import java.io.IOException;
 
-import static contraints.TestConstraints.TEST_URL;
+import static constraints.TestConstraints.TEST_URL;
 
 public class ScenarioHooks {
 
-    private static final ScenarioContextUI contextUI = new ScenarioContextUI();
+    private static final ScenarioContextUI contextUI = new ScenarioContextUI(System.getProperty("defaultos"), System.getProperty("defaultbrowserdriver"));
     public static WebDriver driver = contextUI.getWebDriver();
 
     @BeforeAll
@@ -32,7 +33,6 @@ public class ScenarioHooks {
     public void tearDownForUi(Scenario scenario) throws IOException {
         contextUI.getReport().write(scenario);
         contextUI.getReport().captureFailScenario(scenario, driver);
-
     }
 
 

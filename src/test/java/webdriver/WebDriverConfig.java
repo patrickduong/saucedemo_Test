@@ -10,7 +10,7 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-import static contraints.TestConstraints.*;
+import static constraints.TestConstraints.*;
 
 public class WebDriverConfig {
     public WebDriver driver;

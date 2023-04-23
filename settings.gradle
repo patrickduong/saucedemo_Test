@@ -8,4 +8,6 @@
  */
 
 rootProject.name = 'saucedemo'
+println System.getProperty("defaultos")
+println System.getProperty("defaultbrowserdriver")
 include 'app'
