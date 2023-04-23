@@ -2,8 +2,6 @@ package constraints;
 
 public class TestConstraints {
     public final static String TEST_URL = "https://www.saucedemo.com/";
-    protected final static String EXPECTED_MAIN_PAGE_TITLE = "Swag Labs";
-
     public final static String DEFAULT_PASSWORD = "secret_sauce";
 
     public static final int SLOW_TIMEOUT = 30;

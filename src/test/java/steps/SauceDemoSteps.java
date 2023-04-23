@@ -9,6 +9,8 @@ import pages.InventoryPage;
 import pages.LoginPage;
 import pages.MenuPopUP;
 
+import java.util.Objects;
+
 import static cucumber.ScenarioHooks.driver;
 
 public class SauceDemoSteps {
@@ -29,16 +31,21 @@ public class SauceDemoSteps {
         sauceDemoLoginPage.login(userName, TestConstraints.DEFAULT_PASSWORD);
     }
 
+    @Then("^The page title display is \"([^\"]*)\"$")
+    public void verifyTotalProductItem(String pageTitle) {
+        assert Objects.equals(pageTitle, sauceDemoInventoryPage.getPageTitle());
+    }
+
     @Then("^The Product page display success with (\\d+)")
     public void verifyTotalProductItem(int totalProductItem) {
-        System.out.println("Expected productItem is" + totalProductItem);
-        System.out.println("Actual productItem is" + sauceDemoInventoryPage.countTotalProductItem());
+        System.out.println("Expected productItem is [" + totalProductItem + "]");
+        System.out.println("Actual productItem is [" + sauceDemoInventoryPage.countTotalProductItem() + "]");
         assert totalProductItem == sauceDemoInventoryPage.countTotalProductItem();
 
     }
 
     @When("^I logout the web")
-    public void i_logout_the_web() throws InterruptedException {
+    public void i_logout_the_web() {
         menuPopUP.logout();
     }
 

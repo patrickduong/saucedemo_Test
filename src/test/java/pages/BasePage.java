@@ -12,20 +12,19 @@ import java.util.List;
 public class BasePage {
 
     final WebDriver driver;
-    public static BasePage currentPage;
+
 
     public BasePage(WebDriver driver) {
-        currentPage = this;
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
     public String getPageTitle() {
-        return currentPage.driver.getTitle();
+        return driver.getTitle();
     }
 
     public void navigateTo(String url) {
-        currentPage.driver.navigate().to(url);
+        driver.navigate().to(url);
     }
 
     public void scrollPage(String position) {
@@ -47,17 +46,17 @@ public class BasePage {
         dropdown.selectByVisibleText(item);
     }
 
-    public int getTotalListItem(List<WebElement> elements){
+    public int getTotalListItem(List<WebElement> elements) {
         return elements.size();
     }
 
-    public void waitForElementToClick (By element, long timeout){
+    public void waitForElementToClick(By element, long timeout) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
         clickElement(element);
     }
 
-    public void clickElement(By element){
+    public void clickElement(By element) {
         driver.findElement(element).click();
     }
 

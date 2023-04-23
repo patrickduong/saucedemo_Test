@@ -7,22 +7,23 @@ import org.openqa.selenium.support.FindBy;
 public class LoginPage extends BasePage {
 
     @FindBy(id = "user-name")
-    private WebElement username_field;
+    private WebElement usernameField;
 
     @FindBy(id = "password")
-    private WebElement password_field;
+    private WebElement passwordField;
 
     @FindBy(id = "login-button")
-    private WebElement login_button;
+    private WebElement loginButton;
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
+
     public void login(String userName, String passWord) {
-        username_field.sendKeys(userName);
-        password_field.sendKeys(passWord);
-        login_button.click();
+        usernameField.sendKeys(userName);
+        passwordField.sendKeys(passWord);
+        loginButton.click();
 
     }
 
