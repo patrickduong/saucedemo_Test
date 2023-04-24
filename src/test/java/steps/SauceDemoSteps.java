@@ -32,7 +32,8 @@ public class SauceDemoSteps {
     }
 
     @Then("^The page title display is \"([^\"]*)\"$")
-    public void verifyTotalProductItem(String pageTitle) {
+    public void verifyPageTitle(String pageTitle) {
+        sauceDemoInventoryPage.waitForPageTitleDisplay(pageTitle);
         assert Objects.equals(pageTitle, sauceDemoInventoryPage.getPageTitle());
     }
 

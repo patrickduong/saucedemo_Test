@@ -46,12 +46,12 @@ cucumberReports {
 }
 
 //approach_1: set override the os and driver
-tasks.withType(Test).configureEach {
-    systemProperties = [
-            defaultos           : System.getProperty('defaultos', 'mac'),
-            defaultbrowserdriver: System.getProperty('defaultbrowserdriver', 'firefox')
-    ]
-}
+//tasks.withType(Test).configureEach {
+//    systemProperties = [
+//            defaultos           : System.getProperty('defaultos', 'mac'),
+//            defaultbrowserdriver: System.getProperty('defaultbrowserdriver', 'firefox')
+//    ]
+//}
 
 //approach_2: read from gradle.properties
 tasks.register('uiTest', Test) {

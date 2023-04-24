@@ -9,6 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
+import static constraints.TestConstraints.DEFAULT_WAIT_SECONDS;
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
+
 public class BasePage {
 
     final WebDriver driver;
@@ -21,6 +24,15 @@ public class BasePage {
 
     public String getPageTitle() {
         return driver.getTitle();
+    }
+
+    public void waitForPageTitleDisplay(String title){
+        getWait().until(titleIs(title));
+    }
+
+    WebDriverWait getWait() {
+        new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_WAIT_SECONDS));
+        return null;
     }
 
     public void navigateTo(String url) {
