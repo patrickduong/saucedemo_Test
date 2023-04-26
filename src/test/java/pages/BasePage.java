@@ -5,17 +5,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.List;
-
-import static constraints.TestConstraints.DEFAULT_WAIT_SECONDS;
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 public class BasePage {
 
     final WebDriver driver;
-
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -26,14 +21,6 @@ public class BasePage {
         return driver.getTitle();
     }
 
-    public void waitForPageTitleDisplay(String title){
-        getWait().until(titleIs(title));
-    }
-
-    WebDriverWait getWait() {
-        new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_WAIT_SECONDS));
-        return null;
-    }
 
     public void navigateTo(String url) {
         driver.navigate().to(url);
@@ -48,13 +35,13 @@ public class BasePage {
         }
     }
 
-    public void scrollUntilElementVisible(By element) {
+    public void scrollUntilElementVisible(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView()", driver.findElement(element));
+        js.executeScript("arguments[0].scrollIntoView()", element);
     }
 
-    public void selectDropdownItem(By element, String item) {
-        Select dropdown = new Select(driver.findElement(element));
+    public void selectDropdownItem(WebElement element, String item) {
+        Select dropdown = new Select(element);
         dropdown.selectByVisibleText(item);
     }
 
@@ -62,14 +49,10 @@ public class BasePage {
         return elements.size();
     }
 
-    public void waitForElementToClick(By element, long timeout) {
+    public void waitForElementToClick(WebElement element, long timeout) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(element));
-        clickElement(element);
-    }
-
-    public void clickElement(By element) {
-        driver.findElement(element).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated((By) element));
+        element.click();
     }
 
 }
