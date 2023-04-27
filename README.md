@@ -24,3 +24,4 @@
 
 ## NOTE
 + Feel free to update and customise this template base your own knowledge
++ This test project has promblem with check page title when running directly with gradle.build or via cli. Temporary commented a step in feature file.
