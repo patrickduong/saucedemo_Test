@@ -15,7 +15,7 @@ jobs:
         with:
           java-version: 15
           distribution: 'adopt'
-      - uses: gradle/gradle-build-action@v3
+      - uses: gradle/gradle-build-action@v2
         with:
           arguments: build --scan
       - name: Archive test report
