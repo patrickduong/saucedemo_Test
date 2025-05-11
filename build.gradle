@@ -12,10 +12,10 @@ java {
 ext {
     cucumberVersion = '7.11.2'
     junitbomVersion = '5.9.2'
-    seleniumJavaVersion = '4.1.2'
+    seleniumJavaVersion = '4.22.0'
     junitvintageengineVersion = '5.7.2'
     hamcrestVersion = '2.2'
-    webdrivermanagerVersion = '5.3.2'
+    webdrivermanagerVersion = '5.8.0'
 }
 
 repositories {
