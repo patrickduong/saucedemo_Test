@@ -30,8 +30,7 @@ public class ScenarioContextUI {
 
 
     private WebDriver getFreshWebdriver() {
-
-        //temporary hardcoded with mac and chrome when running with feature file
+        //temporary hardcoded value running with feature file
         System.setProperty("defaultos","mac");
         System.setProperty("defaultbrowserdriver","firefox");
 

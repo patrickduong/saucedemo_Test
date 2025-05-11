@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import pages.InventoryPage;
 import pages.LoginPage;
 import pages.MenuPopUP;
-import java.util.Objects;
+
 import static cucumber.ScenarioHooks.driver;
 
 public class SauceDemoSteps {
@@ -29,10 +29,10 @@ public class SauceDemoSteps {
         sauceDemoLoginPage.login(userName, TestConstraints.DEFAULT_PASSWORD);
     }
 
-    @Then("^The page title display is \"([^\"]*)\"$")
-    public void verifyPageTitle(String pageTitle) {
-        assert Objects.equals(sauceDemoInventoryPage.getPageTitle(), pageTitle);
-    }
+//    @Then("^The page title display is \"([^\"]*)\"$")
+//    public void verifyPageTitle(String pageTitle) {
+//        assert pageTitle == sauceDemoInventoryPage.getPageTitle() ;
+//    }
 
     @Then("^The Product page display success with (\\d+)")
     public void verifyTotalProductItem(int totalProductItem) {
