@@ -2,10 +2,13 @@ package steps;
 
 import constraints.TestConstraints;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
+import pages.CartPage;
 import pages.InventoryPage;
 import pages.LoginPage;
 import pages.MenuPopUP;
@@ -18,14 +21,15 @@ import static cucumber.ScenarioHooks.driver;
 public class SauceDemoSteps {
     private final LoginPage sauceDemoLoginPage;
     private final InventoryPage sauceDemoInventoryPage;
-
     private final MenuPopUP menuPopUP;
+    private final CartPage sauceDemoCartPage;
 
     public SauceDemoSteps() {
 
         sauceDemoLoginPage = PageFactory.initElements(driver, LoginPage.class);
         sauceDemoInventoryPage = PageFactory.initElements(driver, InventoryPage.class);
         menuPopUP = PageFactory.initElements(driver, MenuPopUP.class);
+        sauceDemoCartPage = PageFactory.initElements(driver,CartPage.class);
     }
 
     @Given("^I login with \"([^\"]*)\"$")
@@ -55,6 +59,10 @@ public class SauceDemoSteps {
         }
     }
 
+    @And("the cart contains an item {string} priced {string} with quantity {int}")
+    public void cart_contains_expected_item(String name, String price, Integer qty) {
+        sauceDemoCartPage.verifyItemPresent(name, price, qty);
+    }
 
     @Then("^The Product page display success with (\\d+)")
     public void the_default_product_item_should_show(int totalProductItem) {
@@ -69,4 +77,8 @@ public class SauceDemoSteps {
         menuPopUP.logout();
     }
 
+    @When("I view the cart")
+    public void i_view_the_Cart() {
+        driver.findElement(By.cssSelector("span[data-test='shopping-cart-badge']")).click();
+    }
 }
