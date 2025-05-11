@@ -16,7 +16,7 @@ public class MenuPopUP extends BasePage {
     @FindBy(id = "logout_sidebar_link")
     private WebElement logoutLink;
 
-    public MenuPopUP(WebDriver driver) {
+    public MenuPopUP(final WebDriver driver) {
         super(driver);
     }
 

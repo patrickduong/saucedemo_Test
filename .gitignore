@@ -25,5 +25,7 @@ replay_pid*
 
 /shelf/
 /workspace.xml
+/build
+/target
 .gradle
 .idea

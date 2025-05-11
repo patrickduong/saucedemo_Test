@@ -30,9 +30,13 @@ public class ScenarioContextUI {
 
 
     private WebDriver getFreshWebdriver() {
-        //temporary hardcoded with mac and chrome when running with feature file
-        DEFAULT_OS = System.getProperty("defaultos","mac");
-        DEFAULT_DRIVER = System.getProperty("defaultbrowserdriver","chrome");
+        //temporary hardcoded value running with feature file
+        System.setProperty("defaultos","mac");
+        System.setProperty("defaultbrowserdriver","firefox");
+
+        DEFAULT_OS = System.getProperty("defaultos");
+        DEFAULT_DRIVER = System.getProperty("defaultbrowserdriver");
+
         //cannot pass gradle properties via variables always return null
         System.out.println("********DEFAULT_OS: " +  System.getProperty("defaultos") + "***");
         System.out.println("********DEFAULT_DRIVER: " + System.getProperty("defaultbrowserdriver") + "***");
