@@ -1,8 +1,8 @@
 @ui @sauceDemoCartCheckout
 Feature: UI - SauceDemoCartCheckout Test
 
-  Scenario: Check out on step one and step two
-    Given I login with "standard_user"
+  Scenario Outline: User can add any product for proceed to checkout step One and step Two
+    Given I login with "<username>"
     When I add the following products to the cart:
       | name                  | price  |
       | Sauce Labs Backpack   | $29.99 |
@@ -12,4 +12,9 @@ Feature: UI - SauceDemoCartCheckout Test
     Then the cart badge should show 2
     When I fill checkout form with first name "Jane", last name "Smith", zip code "54321"
     And I "continue" the checkout process
+
+    Examples:
+      | username      |
+      | standard_user |
+
 # not stable for checking - need handle return page objects between cancel and continue
