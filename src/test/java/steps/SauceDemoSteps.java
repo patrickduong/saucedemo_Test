@@ -8,10 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
-import pages.CartPage;
-import pages.InventoryPage;
-import pages.LoginPage;
-import pages.MenuPopUP;
+import pages.*;
 
 import java.util.List;
 import java.util.Map;
@@ -24,12 +21,15 @@ public class SauceDemoSteps {
     private final MenuPopUP menuPopUP;
     private final CartPage sauceDemoCartPage;
 
+    private final CheckoutStepOnePage sauceDemoCheckoutStepOncePage;
+
     public SauceDemoSteps() {
 
         sauceDemoLoginPage = PageFactory.initElements(driver, LoginPage.class);
         sauceDemoInventoryPage = PageFactory.initElements(driver, InventoryPage.class);
         menuPopUP = PageFactory.initElements(driver, MenuPopUP.class);
-        sauceDemoCartPage = PageFactory.initElements(driver,CartPage.class);
+        sauceDemoCartPage = PageFactory.initElements(driver, CartPage.class);
+        sauceDemoCheckoutStepOncePage = PageFactory.initElements(driver, CheckoutStepOnePage.class);
     }
 
     @Given("^I login with \"([^\"]*)\"$")
@@ -75,6 +75,50 @@ public class SauceDemoSteps {
     @When("^I logout the web")
     public void i_logout_the_web() {
         menuPopUP.logout();
+    }
+
+
+    @And("^I proceed to checkout")
+    public void i_proceed_checkout() {
+        driver.findElement(By.cssSelector("[data-test='checkout']")).click();
+    }
+
+
+    @When("I fill checkout form with first name {string}, last name {string}, zip code {string}")
+    public void i_fill_checkout_form(String first, String last, String zip) {
+        sauceDemoCheckoutStepOncePage.fillCustomerInfo(first, last, zip);
+    }
+
+    @And("I {string} the checkout process")
+    public void i_choose_action(String action) {
+        if (action.equalsIgnoreCase("continue")) {
+            sauceDemoCheckoutStepOncePage.continueCheckout();
+        } else if (action.equalsIgnoreCase("cancel")) {
+            sauceDemoCheckoutStepOncePage.cancelCheckout();
+        } else {
+            throw new IllegalArgumentException("Unknown action: " + action);
+        }
+        driver.quit();
+    }
+
+    @Given("I am on the checkout step one page")
+    public void i_am_on_checkout_step_one() {
+
+    }
+
+    @Given("I am on the checkout step two page")
+    public void i_am_on_checkout_step_two() {
+
+    }
+
+    @Given("I am on the inventory page")
+    public void i_am_on_inventory() {
+
+    }
+
+    @Given("I am on the cart page")
+    public void i_am_on_cart() {
+
     }
 
     @When("I view the cart")

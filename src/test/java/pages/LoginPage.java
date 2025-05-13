@@ -15,7 +15,7 @@ public class LoginPage extends BasePage {
     @FindBy(id = "login-button")
     private WebElement loginButton;
 
-    public LoginPage(final WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         super(driver);
     }
 
