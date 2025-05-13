@@ -9,7 +9,7 @@ import java.util.List;
 
 public class CartPage extends BasePage {
 
-    public CartPage(final WebDriver driver) {
+    public CartPage(WebDriver driver) {
         super(driver);
     }
 

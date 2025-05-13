@@ -57,7 +57,7 @@ public class InventoryPage extends BasePage {
     }
 
 
-    public InventoryPage(final WebDriver driver) {
+    public InventoryPage(WebDriver driver) {
         super(driver);
     }
 
